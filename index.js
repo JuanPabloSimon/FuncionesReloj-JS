@@ -1,3 +1,5 @@
+// Cronometro
+
 const stopWatch = document.getElementById('stopwatch');
 const buttonPlayPause = document.getElementById('play-pause');
 const secondsSpphere = document.getElementById('seconds-sphere');
@@ -49,3 +51,30 @@ const calculateTime = runningTime => {
 
     return `${displayMinutes}:${displaySeconds}`
 }
+
+// Reloj
+
+const tiempo = document.querySelector('.hora');
+const fecha = document.querySelector('.fecha');
+
+const Reloj = () => {
+    let f = new Date();
+    let dia = f.getDate();
+    let mes = f.getMonth() + 1;
+    let anio = f.getFullYear();
+    let nombreDia = f.getDay();
+
+    dia = ('0' + dia).slice(-2);
+    mes = ('0' + mes).slice(-2);
+
+    let timeString = f.toLocaleTimeString();
+    tiempo.innerHTML = timeString;
+
+    let semana = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    let showSemana = (semana[nombreDia]);
+    fecha.innerHTML = `${anio}-${mes}-${dia} ${showSemana}`
+}
+
+setInterval(() => {
+    Reloj()
+}, 1000)
